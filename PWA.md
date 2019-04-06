@@ -262,4 +262,26 @@ self.addEventListener('install', function(event) {
     })
   );
 });
+
+当成功获取到缓存之后， SW 并不会直接进行替换，他会等到用户下一次刷新页面过后，使用新的缓存文件。
+```
+
+### 10.介绍：
+``` python
+我们简单介绍一下， client 和 service worker 相互通信。首先， service worker 向 client 发送消息很容易。
+
+self.addEventListener('message', function(event){
+    console.log("SW Received Message: " + event.data);
+    event.ports[0].postMessage("SW Says 'Hello back!'");
+});
+
+
+```
+### 11.介绍：
+``` python
+一个新的前端技术，PWA（ 全称：Progressive Web App ）也就是说这是个渐进式的网页应用程序。
+```
+### 12.介绍：
+``` python
+一个新的前端技术，PWA（ 全称：Progressive Web App ）也就是说这是个渐进式的网页应用程序。
 ```

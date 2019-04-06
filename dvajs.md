@@ -31,6 +31,22 @@ loading 有三个方法，其中 loading.effects['user/query'] 为监听单一�
 如果同时发出若干个异步请求，需求是当所有异步请求都响应才做下一步操作，可以使用 loading.global() 方法，该方法监听所有异步请求的状态。
 (4)怎么用？
 使用 Antd 的 Table 组件 时，查阅 API 可以看到有个 loading 的属性。如果该属性值为 true，Table 组件自身会显示加载效果，该值为 false，加载效果消失。可以通过 loading 对象判断当前是否有异步加载。具体示例代码如下：
-
-
+```
+### 3. dvajs数据流向
+``` python
+数据的改变发生通常是通过用户交互行为或者浏览器行为（如路由跳转等）触发的，当此类行为会改变数据的时候可以通过 dispatch 发起一个 action，如果是同步行为会直接通过 Reducers 改变 State ，如果是异步行为（副作用）会先触发 Effects 然后流向 Reducers 最终改变 State，所以在 dva中，数据流向非常清晰简明，并且思路基本跟开源社区保持一致
+```
+### 4. Subscription
+``` python
+Subscriptions 是一种从 源 获取数据的方法，它来自于 elm。
+Subscription 语义是订阅，用于订阅一个数据源，然后根据条件 dispatch 需要的 action。数据源可以是当前的时间、服务器的 websocket 连接、keyboard 输入、geolocation 变化、history 路由变化等等。
+```
+### 5. Effect
+``` python
+Effect 被称为副作用，在我们的应用中，最常见的就是异步操作。它来自于函数编程的概念，之所以叫副作用是因为它使得我们的函数变得不纯，同样的输入不一定获得同样的输出。
+dva 为了控制副作用的操作，底层引入了redux-sagas做异步流程控制，由于采用了generator的相关概念，所以将异步转成同步写法，从而将effects转为纯函数。
+```
+### 6. connect
+``` python
+通过connect将modul中的元素作为props的方式传递给component.
 ```
